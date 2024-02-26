@@ -1,0 +1,12 @@
+[
+    {
+        "cidade": "São Paulo",
+        "estado": "SP",
+        "populacao": 12038175
+    },
+    {
+        "cidade": "Rio de Janeiro",
+        "estado": "RJ",
+        "populacao": 6747815
+    }
+]

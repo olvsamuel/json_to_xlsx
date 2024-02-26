@@ -27,15 +27,13 @@ Dictionary<int, List<string>> tiposModulo = new Dictionary<int, List<string>>
 };
 
 app.MapGet("/api/exportarXlsx", (
-    [FromQuery] string etapas,
-    [FromQuery] int? idCliente,
-    [FromQuery] DateTime dataPeriodo
+    [FromQuery] string etapas
 ) =>
 {
     //transformar array de etapas string em list int
     List<int> etapasInt = etapas.Split(',').Select(int.Parse).ToList();
     //montar o base path para buscar o relatorio
-    string path = $"Z:/workspace/json_to_xlsx/pdfs/{idCliente}/{dataPeriodo.ToString("yyyy")}/{Convert.ToInt32(dataPeriodo.ToString("MM"))}";
+    string path = $"./json_files";
 
     //percorre as etapas selecionadas
     foreach (var etapa in etapasInt)
@@ -52,7 +50,7 @@ app.MapGet("/api/exportarXlsx", (
             foreach (var tipo in tiposModulo[etapa])
             {
                 // termina de montar o caminho para o arquivo final
-                string pathFile = path + $"/{tipo}-{dataPeriodo.ToString("yyyy-MM-dd")}-{idCliente}.json";
+                string pathFile = path + $"/{tipo}.json";
                 // se o arquivo existir, adiciona na planilha
                 if (File.Exists(pathFile))
                 {
