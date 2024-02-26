@@ -1,0 +1,6 @@
+@json_to_xlsx_HostAddress = http://localhost:5070
+
+GET {{json_to_xlsx_HostAddress}}/json_to_xlsx/
+Accept: application/json
+
+###
